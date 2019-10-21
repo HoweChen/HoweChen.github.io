@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Think Different</title>
+<title>Install GDB in macOS Sierra | Think Different</title>
 <meta name="description" content="Yuhao Chen (Howe) – 陈雨豪" />
 <link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1571660054539">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -84,154 +84,80 @@
   </div>
 </div>
 
-    
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Install GDB in macOS Sierra
+            </h2>
+            <div class="post-info">
+              <span>
+                2016-10-11
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://howechen.github.io//tag/DJf4gnNpiF" class="post-tag">
+                  # macOS
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://howechen.github.io//post-images/install-gdb-in-macos-sierra.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>I found that there was no GDB pre-installed inside the macOS (was called OSX) since very long time ago. So this article is talking about how to install GDB in macOS Sierra.</p>
+<p>First, you need to install <a href="http://brew.sh/">homebrew</a></p>
+<p>Then, install gdb by typing</p>
+<blockquote>
+<p>brew install gdb</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>sudo brew install gdb</p>
+</blockquote>
+<p>But if you are using gdb right now to debug your code, you will find that the terminal will tell you:</p>
+<blockquote>
+<p>Error message from debugger back end: Unable to find Mach task port for process–id 46234: (os/kern) failure (0x5). (please check gdb is codesigned – see taskgated(8)</p>
+</blockquote>
+<p>That is because you haven’t code-sign your own installed gdb yet, so here are two ways to do it.</p>
+<ol>
+<li><a href="http://www.patosai.com/posts/2015/03/24/installing-gdb-on-os-x-yosemite">Code-sign your own gdb.</a></li>
+<li>Let superuser do the job, so it will jump through this certification.</li>
+</ol>
+<p>For the solution two, just type:</p>
+<blockquote>
+<p>sudo gdb</p>
+</blockquote>
+<p>and it will solve your problem.</p>
+<p>Also, you can edit your bash profile or zsh profile to add the alias</p>
+<blockquote>
+<p>alias gdb=”sudo gdb”</p>
+</blockquote>
+<p>then there is no need to type sudo every time, but if you want it to be safe, you can do type sudo every time.</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://howechen.github.io//post/migration-from-apache-to-nginx-server">
+              <h3 class="post-title">
+                Migration from Apache to Nginx server
+              </h3>
+            </a>
+          </div>
         
 
-<div class="archives-container">
-  
-    <h2 class="year">2019</h2>
-    
-      
-        <a href="https://howechen.github.io//post/setting-up-mysql-docker-container-with-local-connection" class="post">
-          <h2 class="post-title">
-            Setting up MySQL docker container with local connection
-          </h2>
-          <div class="time">2019-10-19</div>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    <h2 class="year">2018</h2>
-    
-      
-    
-      
-        <a href="https://howechen.github.io//post/macos-mojave-pyenv-install-multi-version-build-failed-solution" class="post">
-          <h2 class="post-title">
-            macOS Mojave Pyenv install multi-version build failed solution
-          </h2>
-          <div class="time">2018-12-09</div>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    <h2 class="year">2017</h2>
-    
-      
-    
-      
-    
-      
-        <a href="https://howechen.github.io//post/update-of-apache-spark-and-python-36-compatibility" class="post">
-          <h2 class="post-title">
-            Update of Apache Spark and Python 3.6 compatibility
-          </h2>
-          <div class="time">2017-07-28</div>
-        </a>
-      
-    
-      
-        <a href="https://howechen.github.io//post/new-server-migration-from-aliyun-back-to-digital-ocean" class="post">
-          <h2 class="post-title">
-            New Server Migration! From Aliyun back to Digital Ocean
-          </h2>
-          <div class="time">2017-05-19</div>
-        </a>
-      
-    
-      
-        <a href="https://howechen.github.io//post/fix-compatibility-of-apache-spark-210-with-python-36" class="post">
-          <h2 class="post-title">
-            Fix compatibility of Apache-Spark 2.1.0 with Python 3.6
-          </h2>
-          <div class="time">2017-03-12</div>
-        </a>
-      
-    
-      
-    
-      
-    
-  
-    <h2 class="year">2016</h2>
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://howechen.github.io//post/install-gdb-in-macos-sierra" class="post">
-          <h2 class="post-title">
-            Install GDB in macOS Sierra
-          </h2>
-          <div class="time">2016-10-11</div>
-        </a>
-      
-    
-      
-    
-  
-    <h2 class="year">2015</h2>
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://howechen.github.io//post/migration-from-apache-to-nginx-server" class="post">
-          <h2 class="post-title">
-            Migration from Apache to Nginx server
-          </h2>
-          <div class="time">2015-11-17</div>
-        </a>
-      
-    
-  
-</div>
+        
 
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
   <a class="rss" href="https://howechen.github.io//atom.xml" target="_blank">RSS</a>

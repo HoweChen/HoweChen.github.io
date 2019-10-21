@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://howechen.github.io/</id>
     <title>Think Different</title>
-    <updated>2019-10-21T12:11:01.677Z</updated>
+    <updated>2019-10-21T12:14:16.068Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://howechen.github.io/"/>
     <link rel="self" href="https://howechen.github.io//atom.xml"/>
@@ -205,6 +205,43 @@ pip2 install -e.
 </ol>
 </li>
 </ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Install GDB in macOS Sierra]]></title>
+        <id>https://howechen.github.io//post/install-gdb-in-macos-sierra</id>
+        <link href="https://howechen.github.io//post/install-gdb-in-macos-sierra">
+        </link>
+        <updated>2016-10-11T12:13:38.000Z</updated>
+        <content type="html"><![CDATA[<p>I found that there was no GDB pre-installed inside the macOS (was called OSX) since very long time ago. So this article is talking about how to install GDB in macOS Sierra.</p>
+<p>First, you need to install <a href="http://brew.sh/">homebrew</a></p>
+<p>Then, install gdb by typing</p>
+<blockquote>
+<p>brew install gdb</p>
+</blockquote>
+<p>or</p>
+<blockquote>
+<p>sudo brew install gdb</p>
+</blockquote>
+<p>But if you are using gdb right now to debug your code, you will find that the terminal will tell you:</p>
+<blockquote>
+<p>Error message from debugger back end: Unable to find Mach task port for process–id 46234: (os/kern) failure (0x5). (please check gdb is codesigned – see taskgated(8)</p>
+</blockquote>
+<p>That is because you haven’t code-sign your own installed gdb yet, so here are two ways to do it.</p>
+<ol>
+<li><a href="http://www.patosai.com/posts/2015/03/24/installing-gdb-on-os-x-yosemite">Code-sign your own gdb.</a></li>
+<li>Let superuser do the job, so it will jump through this certification.</li>
+</ol>
+<p>For the solution two, just type:</p>
+<blockquote>
+<p>sudo gdb</p>
+</blockquote>
+<p>and it will solve your problem.</p>
+<p>Also, you can edit your bash profile or zsh profile to add the alias</p>
+<blockquote>
+<p>alias gdb=”sudo gdb”</p>
+</blockquote>
+<p>then there is no need to type sudo every time, but if you want it to be safe, you can do type sudo every time.</p>
 ]]></content>
     </entry>
     <entry>
