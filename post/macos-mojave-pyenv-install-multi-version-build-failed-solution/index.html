@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Setting up MySQL docker container with local connection | Think Different</title>
+<title>macOS Mojave Pyenv install multi-version build failed solution | Think Different</title>
 <meta name="description" content="Yuhao Chen (Howe) – 陈雨豪" />
 <link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1571620980930">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -87,89 +87,62 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Setting up MySQL docker container with local connection
+              macOS Mojave Pyenv install multi-version build failed solution
             </h2>
             <div class="post-info">
               <span>
-                2019-10-19
+                2018-12-09
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://howechen.github.io//tag/MySQL" class="post-tag">
-                  # MySQL
-                </a>
-              
-                <a href="https://howechen.github.io//tag/QomB2g82k" class="post-tag">
-                  # Docker
-                </a>
-              
             </div>
             
-              <img class="post-feature-image" src="https://howechen.github.io//post-images/setting-up-mysql-docker-container-with-local-connection.jpg" alt="">
+              <img class="post-feature-image" src="https://howechen.github.io//post-images/macos-mojave-pyenv-install-multi-version-build-failed-solution.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="scenario">Scenario</h1>
-<p>Things happen when I need to have multiple mysql versions on my macbook, and I foudn taht the homebrew's version is not good enough. I cannot start a mysql process. So I want docker to fix the issue.</p>
-<!-- more -->
-<figure data-type="image" tabindex="1"><img src="https://howechen.github.io//post-images/1571488230838.png" alt=""></figure>
-<h1 id="solution">Solution</h1>
-<h2 id="pull-the-latest-mysql-image">Pull the latest mysql image</h2>
-<pre><code class="language-shell">
-docker pull mysql/mysql-server:latest
+                <h2 id="build-failed">Build Failed</h2>
+<p>On macOS Mojave, if you want to install multi-version of python. You might get build failed error.</p>
+<p>The error would be like:</p>
+<pre><code class="language-shell">BUILD FAILED (OS X 10.14.1 using python-build 20180424)
 
+Inspect or clean up the working tree at /var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936
+Results logged to /var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936.log
+
+Last 10 log lines:
+File &quot;/private/var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936/Python-3.6.7/Lib/ensurepip/__main__.py&quot;, line 5, in &lt;module&gt;
+sys.exit(ensurepip._main())
+File &quot;/private/var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936/Python-3.6.7/Lib/ensurepip/__init__.py&quot;, line 204, in _main
+default_pip=args.default_pip,
+File &quot;/private/var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936/Python-3.6.7/Lib/ensurepip/__init__.py&quot;, line 117, in _bootstrap
+return _run_pip(args + [p[0] for p in _PROJECTS], additional_paths)
+File &quot;/private/var/folders/wm/hm_v7w195c7ftkk6rjlk9qlc0000gn/T/python-build.20181208174645.70936/Python-3.6.7/Lib/ensurepip/__init__.py&quot;, line 27, in _run_pip
+import pip._internal
+zipimport.ZipImportError: can't decompress data; zlib not available
+make: *** [install] Error 1
 </code></pre>
-<h2 id="run-docker-container-based-on-docker-image">Run docker container based on docker image</h2>
-<pre><code>
-docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /docker/mysql_data:/var/lib/mysql mysql/mysql:5.6
-
+<p>On some webpage from StackOverflow, the solution will be used</p>
+<pre><code class="language-shell">xcode-select --install
 </code></pre>
-<h3 id="parameter-explanation">Parameter explanation</h3>
-<p>--name mysql: your container name, I set this to mysql56</p>
-<p>-d: run the container at the background and return the contianer ID</p>
-<p>-p 3306:3306: former port stands for local port, and latter port is the container port. By default the mysql port on docker container is 3306</p>
-<p>-e MYSQL_ROOT_PASSWORD=123456: you can set your own root password</p>
-<p>-v /docker/mysql_data:/var/lib/mysql: map the folder in container to the local path, please make sure that on Mac you have permitted the folder in GUI. This is for data persistance usage.</p>
-<figure data-type="image" tabindex="2"><img src="https://howechen.github.io//post-images/1571488273990.png" alt=""></figure>
-<p>mysql/mysql:5.6: this defines that I want to use mysql 5.6 version. You can check the tag name you want on the docker hub website.</p>
-<p>[optional]--restart always: always restart the ocntainer when the container exit.</p>
-<h2 id="check-the-current-running-cotainer">Check the current running cotainer</h2>
-<pre><code class="language-shell">
-docker ps
-
+<p>But this cannot fix the issue on Mojave.</p>
+<h2 id="solution">Solution</h2>
+<p>I saw this on GitHub, just post a blog to note this command.</p>
+<p>On Mojave, just type:</p>
+<pre><code class="language-shell">sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 </code></pre>
-<h2 id="get-into-the-container-with-bash">Get into the container with bash</h2>
-<pre><code class="language-shell">
-
-docker exec -it mysql56 bash
-
-mysql -uroot -p
-
-</code></pre>
-<h2 id="grant-permission-for-external-login">Grant permission for external login</h2>
-<p>You still cannot login to the mysql container externally because for now the mysql only permit user from localhost, e.g. root@localhsot, you need to type:</p>
-<pre><code class="language-sql">
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRANT OPTION;
-
+<p>and then install another environment, like</p>
+<pre><code class="language-shell">pyenv install 3.6.7
 </code></pre>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#scenario">Scenario</a></li>
-<li><a href="#solution">Solution</a>
+<li>
 <ul>
-<li><a href="#pull-the-latest-mysql-image">Pull the latest mysql image</a></li>
-<li><a href="#run-docker-container-based-on-docker-image">Run docker container based on docker image</a>
-<ul>
-<li><a href="#parameter-explanation">Parameter explanation</a></li>
-</ul>
-</li>
-<li><a href="#check-the-current-running-cotainer">Check the current running cotainer</a></li>
-<li><a href="#get-into-the-container-with-bash">Get into the container with bash</a></li>
-<li><a href="#grant-permission-for-external-login">Grant permission for external login</a></li>
+<li><a href="#build-failed">Build Failed</a></li>
+<li><a href="#solution">Solution</a></li>
 </ul>
 </li>
 </ul>
@@ -179,15 +152,6 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRA
           </article>
         </div>
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://howechen.github.io//post/macos-mojave-pyenv-install-multi-version-build-failed-solution">
-              <h3 class="post-title">
-                macOS Mojave Pyenv install multi-version build failed solution
-              </h3>
-            </a>
-          </div>
         
 
         
