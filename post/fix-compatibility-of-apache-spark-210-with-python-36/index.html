@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>New Server Migration! From Aliyun back to Digital Ocean | Think Different</title>
+<title>Fix compatibility of Apache-Spark 2.1.0 with Python 3.6 | Think Different</title>
 <meta name="description" content="Yuhao Chen (Howe) – 陈雨豪" />
 <link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1571659860394">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -87,33 +87,86 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              New Server Migration! From Aliyun back to Digital Ocean
+              Fix compatibility of Apache-Spark 2.1.0 with Python 3.6
             </h2>
             <div class="post-info">
               <span>
-                2017-05-19
+                2017-03-12
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://howechen.github.io//tag/ojIaBc1Ga" class="post-tag">
-                  # Server
+                <a href="https://howechen.github.io//tag/amUHjbThe" class="post-tag">
+                  # Spark
+                </a>
+              
+                <a href="https://howechen.github.io//tag/_0h0G_Qc5" class="post-tag">
+                  # Python
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://howechen.github.io//post-images/new-server-migration-from-aliyun-back-to-digital-ocean.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>Today I migrated my blog back to the Digital Ocean from Aliyun, I have used Aliyun for a quiet long time and the price is a little bit out of my level to pay monthly. This is the main reason. So this article is about some other more information or knowledge you need to know if you are going to migrate your WordPress Blog to another server.</p>
-<p>First you might need to look at this article written by me about <a href="http://www.blog.howechen.com/migration-from-apache-to-nginx-server/">migration from Apache to Nginx server</a>. You may found the most important information you wanna know about.</p>
-<p>Also, here are some articles I felt very useful for the migration if you are concerning about the basic security stuff about your server and some other basic linux command you might need to know. Here is the reading list:</p>
+                <p>If you are using MacOs Sierra and Homebrew like me, and you want to build comething cool with Apache-Spark and Python3, you would find the compatibility problem while using the pyspark framework. So this article is to tell you how to solve it.</p>
+<p>The only way for now is to install Python 3.5 by using Pyenv on Homebrew since the compatibility will be fixed on Apache-Spark 2.2.0 and it hasn’t been released.</p>
 <ol>
-<li><a href="http://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04">Initial Server Setup with Ubuntu 16.04</a></li>
-<li><a href="http://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04">How To Install Linux, Nginx, MySQL, PHP (LEMP stack) in Ubuntu 16.04.</a></li>
-<li>[How To Install and Secure phpMyAdmin with Nginx on an Ubuntu 14.04 Server.</li>
+<li>
+<p>Install Pyenv</p>
+<ol>
+<li>
+<p>Supposed that you have install Apache-Spark and Python 3.6 correctly by using the homebrew</p>
+</li>
+<li>
+<p>brew install pyenv</p>
+</li>
+<li>
+<p>Change your shell-rc file</p>
+<ol>
+<li>
+<p>add the following command at the begining of configuation</p>
+<pre><code>eval “$(jenv init -)”
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Install Python 3.5 (for now the latest version is 3.5.2)</p>
+<pre><code>pyenv install python 3.5.2
+</code></pre>
+</li>
+<li>
+<p>Change global Python to 3.5.2 instead of 3.6.x</p>
+<pre><code>pyenv global 3.5.2
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Install pyspark framework by using pip3</p>
+<ol>
+<li>
+<p>So for now your pip would be directed to python 3.5.2</p>
+</li>
+<li>
+<p>Go to your $SPARK_HOME/libexec/python</p>
+</li>
+<li>
+<pre><code>pip3 install -e .
+pip2 install -e.
+</code></pre>
+</li>
+<li>
+<p>Then you would find that you cannot get to the $SPARK_HOME</p>
+<pre><code>brew link –over-write apache-spark
+</code></pre>
+</li>
+<li>
+<p>Then happy hacking with pyspark</p>
+</li>
+</ol>
+</li>
 </ol>
 
               </div>
@@ -127,9 +180,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://howechen.github.io//post/fix-compatibility-of-apache-spark-210-with-python-36">
+            <a href="https://howechen.github.io//post/migration-from-apache-to-nginx-server">
               <h3 class="post-title">
-                Fix compatibility of Apache-Spark 2.1.0 with Python 3.6
+                Migration from Apache to Nginx server
               </h3>
             </a>
           </div>
