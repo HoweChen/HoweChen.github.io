@@ -1,0 +1,299 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Migration from Apache to Nginx server | Think Different</title>
+<meta name="description" content="Yuhao Chen (Howe) – 陈雨豪" />
+<link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1571659687694">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://howechen.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://howechen.github.io/">
+  <img class="avatar" src="https://howechen.github.io//images/avatar.png?v=1571659687694" alt="">
+  </a>
+  <h1 class="site-title">
+    Think Different
+  </h1>
+  <p class="site-description">
+    Yuhao Chen (Howe) – 陈雨豪
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          Home
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          Archives
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          Tags
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          About
+        </a>
+      
+    
+      
+        <a href="https://500px.com/skyfather" class="menu" target="_blank">
+          500px
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/HoweChen" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="twitter.com/HoweChen" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Migration from Apache to Nginx server
+            </h2>
+            <div class="post-info">
+              <span>
+                2015-11-17
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://howechen.github.io//tag/ojIaBc1Ga" class="post-tag">
+                  # Server
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>In this article I will generate the solution of migration from Apache to Nginx server with your wordpress or other web app.</p>
+<p>I am using digital ocean VPS as my blog server. I had been using the Singapore line for a year and the lag was to much for me and also, the shadowsocks service was not good for it. So I decided to change the server to San Francisco.</p>
+<p>Last night I just migrated my server to the new one. I also use LEMP as my server framework instead of LAMP.</p>
+<p>Here is my experience of migrating the wordpress from Apache to Nginx server, I met some problems but I have fixed them so I want to post an artical about it.</p>
+<ol>
+<li>
+<p><a href="http://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04">Install LEMP</a></p>
+</li>
+<li>
+<p>Export your wordpress or other app database and import to your new server by using phpmyadminYou might meet the problem of the upload max size.</p>
+<ul>
+<li>Choose export with compress option</li>
+<li>Change the max size of uploading file for the server(if your compressed file is also too big for the default server upload setting)</li>
+</ul>
+<p><a href="http://rtcamp.com/tutorials/php/increase-file-upload-size-limit/">//rtcamp.com/tutorials/php/increase-file-upload-size-limit/</a></p>
+<p>This website will tell you what you need to do.</p>
+</li>
+<li>
+<p>Compress your wordpress or other app and upload to your new server.</p>
+</li>
+<li>
+<p>Import database to your new server by using phpmyadmin. (Note: You need to create a new database which has the same name as your old server.)Enter your new database and import your database.After that you might still cannot open your blog which might display database error, you need to check the privilege of your wordpress database, and you will find that you lost a wordpress user for your database, check the wp-config.php inside your wordpress folder, find the DB_USER and create a new user of your database, for me it is like this:</p>
+<p>after that, you can open your blog without your specify website address.when you update your theme or plugin you will find that you need to offer your server’s ftp username and password, if you don’t know you will not to update.The way to solve it is to add a line in the wp-config.php:</p>
+<pre><code>define('FS_METHOD', 'direct');
+</code></pre>
+<p>This might not be the safest way, but it can solve the problem.</p>
+</li>
+<li>
+<p>Bind your server with the domain name</p>
+</li>
+</ol>
+<p>If you are using Nginx as me, you need to define a new domain name setting under the sites-available folder:</p>
+<p>The format is simply declared in the default setting file. I will show you some example of it:</p>
+<pre><code>##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# //wiki.nginx.org/Pitfalls
+# //wiki.nginx.org/QuickStart
+# //wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
+server {
+    listen 80;
+    listen [::]:80;
+
+    # SSL configuration
+    #
+    # listen 443 ssl default_server;
+    # listen [::]:443 ssl default_server;
+    #
+    # Note: You should disable gzip for SSL traffic.
+    # See: //bugs.debian.org/773332
+    #
+    # Read up on ssl_ciphers to ensure a secure configuration.
+    # See: //bugs.debian.org/765782
+    #
+    # Self signed certs generated by the ssl-cert package
+    # Don't use them in a production server!
+    #
+    # include snippets/snakeoil.conf;
+
+    root your_web_app_folder;
+
+    # Add index.php to the list if you are using PHP
+    index index.php index.html index.htm;
+
+    server_name your_domain_name;
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ /index.php;
+    }
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    # location ~ \.php$ {
+    # 	include snippets/fastcgi-php.conf;
+    #
+    # 	# With php5-cgi alone:
+    # 	fastcgi_pass 127.0.0.1:9000;
+    # 	# With php5-fpm:
+    # 	fastcgi_pass unix:/var/run/php5-fpm.sock;
+    # }
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    # location ~ /\.ht {
+    #     deny all;
+    # }
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+
+    }
+}
+</code></pre>
+<p>You may find that I set the</p>
+<pre><code>    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ /index.php;
+    }
+</code></pre>
+<p>The reason that I set index.php is that I changed the permalinks of wordpress so the SEO plugin would map my sebsite better then before. But under Nginx you will find that the old posts will not be open so I found the solution in <a href="http://wordpress.org/support/topic/permalinks-nginx-not-working-help-required">here</a>.</p>
+<p>Change to index.php will help you solve this problem.</p>
+<p>I also create the new Nginx setting to solve my website’s domain name Skyfather1994.com, and blog.skyfather1994.com point to my blog.</p>
+<p>So basically the migration of my server and web app(in this case is wordpress) from Apache to Nginx was done.</p>
+<p>Also, you might find that you cannot open your blog but download a index.php of your wordpress folder, this problem annoyed me for more than an hour, the way to solve it is to clear the browser’s cache, pretty dumb and simple question.= =</p>
+<p>Hope this post will help you figure out your problem.</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://howechen.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
