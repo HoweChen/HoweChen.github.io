@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://howechen.github.io/</id>
     <title>Think Different</title>
-    <updated>2019-10-21T11:59:28.975Z</updated>
+    <updated>2019-10-21T12:06:25.107Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://howechen.github.io/"/>
     <link rel="self" href="https://howechen.github.io//atom.xml"/>
@@ -122,6 +122,22 @@ make: *** [install] Error 1
 <p>As you can see, I am using ptipython3 as my Python 3 REPL. You can use the default interpreter by changing it to python3 and that will be good for you to use.</p>
 <p>Ptpython is a better python interpreter, here is the link:</p>
 <p>[github.com/jonathanslenders/ptpython</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[New Server Migration! From Aliyun back to Digital Ocean]]></title>
+        <id>https://howechen.github.io//post/new-server-migration-from-aliyun-back-to-digital-ocean</id>
+        <link href="https://howechen.github.io//post/new-server-migration-from-aliyun-back-to-digital-ocean">
+        </link>
+        <updated>2017-05-19T12:05:25.000Z</updated>
+        <content type="html"><![CDATA[<p>Today I migrated my blog back to the Digital Ocean from Aliyun, I have used Aliyun for a quiet long time and the price is a little bit out of my level to pay monthly. This is the main reason. So this article is about some other more information or knowledge you need to know if you are going to migrate your WordPress Blog to another server.</p>
+<p>First you might need to look at this article written by me about <a href="http://www.blog.howechen.com/migration-from-apache-to-nginx-server/">migration from Apache to Nginx server</a>. You may found the most important information you wanna know about.</p>
+<p>Also, here are some articles I felt very useful for the migration if you are concerning about the basic security stuff about your server and some other basic linux command you might need to know. Here is the reading list:</p>
+<ol>
+<li><a href="http://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04">Initial Server Setup with Ubuntu 16.04</a></li>
+<li><a href="http://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04">How To Install Linux, Nginx, MySQL, PHP (LEMP stack) in Ubuntu 16.04.</a></li>
+<li>[How To Install and Secure phpMyAdmin with Nginx on an Ubuntu 14.04 Server.</li>
+</ol>
 ]]></content>
     </entry>
 </feed>
