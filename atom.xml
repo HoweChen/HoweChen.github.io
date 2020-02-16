@@ -2,18 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://howechen.github.io/</id>
     <title>Think Different</title>
-    <updated>2019-10-21T15:37:28.003Z</updated>
+    <updated>2020-02-16T11:11:34.551Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://howechen.github.io/"/>
-    <link rel="self" href="https://howechen.github.io//atom.xml"/>
+    <link rel="self" href="https://howechen.github.io/atom.xml"/>
     <subtitle>Yuhao Chen (Howe) – 陈雨豪</subtitle>
-    <logo>https://howechen.github.io//images/avatar.png</logo>
-    <icon>https://howechen.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, Think Different</rights>
+    <logo>https://howechen.github.io/images/avatar.png</logo>
+    <icon>https://howechen.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Think Different</rights>
     <entry>
         <title type="html"><![CDATA[Setting up MySQL docker container with local connection]]></title>
-        <id>https://howechen.github.io//post/setting-up-mysql-docker-container-with-local-connection</id>
-        <link href="https://howechen.github.io//post/setting-up-mysql-docker-container-with-local-connection">
+        <id>https://howechen.github.io/post/setting-up-mysql-docker-container-with-local-connection/</id>
+        <link href="https://howechen.github.io/post/setting-up-mysql-docker-container-with-local-connection/">
         </link>
         <updated>2019-10-19T12:27:15.000Z</updated>
         <summary type="html"><![CDATA[<h1 id="scenario">Scenario</h1>
@@ -22,7 +22,7 @@
         <content type="html"><![CDATA[<h1 id="scenario">Scenario</h1>
 <p>Things happen when I need to have multiple mysql versions on my macbook, and I foudn taht the homebrew's version is not good enough. I cannot start a mysql process. So I want docker to fix the issue.</p>
 <!-- more -->
-<figure data-type="image" tabindex="1"><img src="https://howechen.github.io//post-images/1571488230838.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://howechen.github.io//post-images/1571488230838.png" alt="" loading="lazy"></figure>
 <h1 id="solution">Solution</h1>
 <h2 id="pull-the-latest-mysql-image">Pull the latest mysql image</h2>
 <pre><code class="language-shell">
@@ -40,7 +40,7 @@ docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /docker
 <p>-p 3306:3306: former port stands for local port, and latter port is the container port. By default the mysql port on docker container is 3306</p>
 <p>-e MYSQL_ROOT_PASSWORD=123456: you can set your own root password</p>
 <p>-v /docker/mysql_data:/var/lib/mysql: map the folder in container to the local path, please make sure that on Mac you have permitted the folder in GUI. This is for data persistance usage.</p>
-<figure data-type="image" tabindex="2"><img src="https://howechen.github.io//post-images/1571488273990.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://howechen.github.io//post-images/1571488273990.png" alt="" loading="lazy"></figure>
 <p>mysql/mysql:5.6: this defines that I want to use mysql 5.6 version. You can check the tag name you want on the docker hub website.</p>
 <p>[optional]--restart always: always restart the ocntainer when the container exit.</p>
 <h2 id="check-the-current-running-cotainer">Check the current running cotainer</h2>
@@ -66,8 +66,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRA
     </entry>
     <entry>
         <title type="html"><![CDATA[macOS Mojave Pyenv install multi-version build failed solution]]></title>
-        <id>https://howechen.github.io//post/macos-mojave-pyenv-install-multi-version-build-failed-solution</id>
-        <link href="https://howechen.github.io//post/macos-mojave-pyenv-install-multi-version-build-failed-solution">
+        <id>https://howechen.github.io/post/macos-mojave-pyenv-install-multi-version-build-failed-solution/</id>
+        <link href="https://howechen.github.io/post/macos-mojave-pyenv-install-multi-version-build-failed-solution/">
         </link>
         <updated>2018-12-09T01:19:43.000Z</updated>
         <content type="html"><![CDATA[<h2 id="build-failed">Build Failed</h2>
@@ -106,8 +106,8 @@ make: *** [install] Error 1
     </entry>
     <entry>
         <title type="html"><![CDATA[Update of Apache Spark and Python 3.6 compatibility]]></title>
-        <id>https://howechen.github.io//post/update-of-apache-spark-and-python-36-compatibility</id>
-        <link href="https://howechen.github.io//post/update-of-apache-spark-and-python-36-compatibility">
+        <id>https://howechen.github.io/post/update-of-apache-spark-and-python-36-compatibility/</id>
+        <link href="https://howechen.github.io/post/update-of-apache-spark-and-python-36-compatibility/">
         </link>
         <updated>2017-07-28T11:38:32.000Z</updated>
         <summary type="html"><![CDATA[<p>Now the Apache-Spark has released two stable version, 2.1.1 and 2.2.0. The compatibility problem has been solved, you don’t need to try pyenv anymore. Just install apache-spark from home-brew then you may use it.</p>
@@ -126,8 +126,8 @@ make: *** [install] Error 1
     </entry>
     <entry>
         <title type="html"><![CDATA[New Server Migration! From Aliyun back to Digital Ocean]]></title>
-        <id>https://howechen.github.io//post/new-server-migration-from-aliyun-back-to-digital-ocean</id>
-        <link href="https://howechen.github.io//post/new-server-migration-from-aliyun-back-to-digital-ocean">
+        <id>https://howechen.github.io/post/new-server-migration-from-aliyun-back-to-digital-ocean/</id>
+        <link href="https://howechen.github.io/post/new-server-migration-from-aliyun-back-to-digital-ocean/">
         </link>
         <updated>2017-05-19T12:05:25.000Z</updated>
         <content type="html"><![CDATA[<p>Today I migrated my blog back to the Digital Ocean from Aliyun, I have used Aliyun for a quiet long time and the price is a little bit out of my level to pay monthly. This is the main reason. So this article is about some other more information or knowledge you need to know if you are going to migrate your WordPress Blog to another server.</p>
@@ -142,8 +142,8 @@ make: *** [install] Error 1
     </entry>
     <entry>
         <title type="html"><![CDATA[Fix compatibility of Apache-Spark 2.1.0 with Python 3.6]]></title>
-        <id>https://howechen.github.io//post/fix-compatibility-of-apache-spark-210-with-python-36</id>
-        <link href="https://howechen.github.io//post/fix-compatibility-of-apache-spark-210-with-python-36">
+        <id>https://howechen.github.io/post/fix-compatibility-of-apache-spark-210-with-python-36/</id>
+        <link href="https://howechen.github.io/post/fix-compatibility-of-apache-spark-210-with-python-36/">
         </link>
         <updated>2017-03-12T12:10:29.000Z</updated>
         <content type="html"><![CDATA[<p>If you are using MacOs Sierra and Homebrew like me, and you want to build comething cool with Apache-Spark and Python3, you would find the compatibility problem while using the pyspark framework. So this article is to tell you how to solve it.</p>
@@ -209,8 +209,8 @@ pip2 install -e.
     </entry>
     <entry>
         <title type="html"><![CDATA[Install GDB in macOS Sierra]]></title>
-        <id>https://howechen.github.io//post/install-gdb-in-macos-sierra</id>
-        <link href="https://howechen.github.io//post/install-gdb-in-macos-sierra">
+        <id>https://howechen.github.io/post/install-gdb-in-macos-sierra/</id>
+        <link href="https://howechen.github.io/post/install-gdb-in-macos-sierra/">
         </link>
         <updated>2016-10-11T12:13:38.000Z</updated>
         <content type="html"><![CDATA[<p>I found that there was no GDB pre-installed inside the macOS (was called OSX) since very long time ago. So this article is talking about how to install GDB in macOS Sierra.</p>
@@ -246,8 +246,8 @@ pip2 install -e.
     </entry>
     <entry>
         <title type="html"><![CDATA[Migration from Apache to Nginx server]]></title>
-        <id>https://howechen.github.io//post/migration-from-apache-to-nginx-server</id>
-        <link href="https://howechen.github.io//post/migration-from-apache-to-nginx-server">
+        <id>https://howechen.github.io/post/migration-from-apache-to-nginx-server/</id>
+        <link href="https://howechen.github.io/post/migration-from-apache-to-nginx-server/">
         </link>
         <updated>2015-11-17T12:07:28.000Z</updated>
         <content type="html"><![CDATA[<p>In this article I will generate the solution of migration from Apache to Nginx server with your wordpress or other web app.</p>

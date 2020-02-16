@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Setting up MySQL docker container with local connection | Think Different</title>
 <meta name="description" content="Yuhao Chen (Howe) – 陈雨豪" />
-<link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1571672244954">
+<link rel="shortcut icon" href="https://howechen.github.io//favicon.ico?v=1581851492470">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://howechen.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://howechen.github.io/">
-  <img class="avatar" src="https://howechen.github.io//images/avatar.png?v=1571672244954" alt="">
+  <img class="avatar" src="https://howechen.github.io//images/avatar.png?v=1581851492470" alt="">
   </a>
   <h1 class="site-title">
     Think Different
@@ -97,11 +97,11 @@
                 2 min read
               </span>
               
-                <a href="https://howechen.github.io//tag/MySQL" class="post-tag">
+                <a href="https://howechen.github.io/tag/MySQL/" class="post-tag">
                   # MySQL
                 </a>
               
-                <a href="https://howechen.github.io//tag/QomB2g82k" class="post-tag">
+                <a href="https://howechen.github.io/tag/QomB2g82k/" class="post-tag">
                   # Docker
                 </a>
               
@@ -114,7 +114,7 @@
                 <h1 id="scenario">Scenario</h1>
 <p>Things happen when I need to have multiple mysql versions on my macbook, and I foudn taht the homebrew's version is not good enough. I cannot start a mysql process. So I want docker to fix the issue.</p>
 <!-- more -->
-<figure data-type="image" tabindex="1"><img src="https://howechen.github.io//post-images/1571488230838.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://howechen.github.io//post-images/1571488230838.png" alt="" loading="lazy"></figure>
 <h1 id="solution">Solution</h1>
 <h2 id="pull-the-latest-mysql-image">Pull the latest mysql image</h2>
 <pre><code class="language-shell">
@@ -132,7 +132,7 @@ docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /docker
 <p>-p 3306:3306: former port stands for local port, and latter port is the container port. By default the mysql port on docker container is 3306</p>
 <p>-e MYSQL_ROOT_PASSWORD=123456: you can set your own root password</p>
 <p>-v /docker/mysql_data:/var/lib/mysql: map the folder in container to the local path, please make sure that on Mac you have permitted the folder in GUI. This is for data persistance usage.</p>
-<figure data-type="image" tabindex="2"><img src="https://howechen.github.io//post-images/1571488273990.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://howechen.github.io//post-images/1571488273990.png" alt="" loading="lazy"></figure>
 <p>mysql/mysql:5.6: this defines that I want to use mysql 5.6 version. You can check the tag name you want on the docker hub website.</p>
 <p>[optional]--restart always: always restart the ocntainer when the container exit.</p>
 <h2 id="check-the-current-running-cotainer">Check the current running cotainer</h2>
@@ -182,7 +182,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRA
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://howechen.github.io//post/macos-mojave-pyenv-install-multi-version-build-failed-solution">
+            <a href="https://howechen.github.io/post/macos-mojave-pyenv-install-multi-version-build-failed-solution/">
               <h3 class="post-title">
                 macOS Mojave Pyenv install multi-version build failed solution
               </h3>
